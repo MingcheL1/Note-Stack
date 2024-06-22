@@ -1,4 +1,8 @@
-let generatedContent = ''; // Variable to store the generated content
+import { FC } from "react"
+import { Navbar } from "./navbar"
+
+export const AI:FC=()=>{
+    let generatedContent = ''; // Variable to store the generated content
 
 async function generateContent(prompt) {
   const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA-Rv1tf59PGCNnb2FPdDGZt6VMxhZagF4';
@@ -63,3 +67,20 @@ getGeneratedContent()
     output.innerText = generatedContent;
   
   });
+    return(
+        <div className="bg-black h-screen w-screen">
+        <Navbar/>
+        <div className="flex items-center justify-center p-5">
+            <div className="rounded-lg p-5">
+                <div className="flex">
+                <div className="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5">
+                </div>
+                <input type="text" className="w-full max-w-[160px] bg-white pl-2 text-base font-semibold outline-0" placeholder="ask me to generate notes" id="input"/>
+                <input type="button" value="Generate" className="bg-blue-500 p-2 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors"/>
+                </div>
+            </div>
+        </div>
+        <p className="text-white" id="output"></p>
+    </div>
+    )
+}
