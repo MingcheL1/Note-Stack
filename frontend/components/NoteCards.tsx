@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 
-export const Credits: FC = () => {
+export const NoteCards: FC = () => {
   const notes = [
     {
         "title": "First Post",
@@ -48,18 +48,14 @@ export const Credits: FC = () => {
       
   ];
   return (
-
+    <div>
       <div className="grid grid-cols-3 gap-4">
-        {notes.map((notes) => (
-          <div key={note.id} className="text-center my-5">
-            <div className="flex flex-col items-center">
-              <div className="relative overflow-hidden rounded-full shadow-md w-24 h-24 ">
-                <img src={ppl.img} alt={ppl.name + "'s picture"} className="object-cover" />
-              </div>
-              <p className="font-bold">{ppl.name}</p>
-              <p>{ppl.job}</p>
-              <p>{ppl.email}</p>
-            </div>
+        {notes.map((note) => (
+          <div key={note.createdAt} className="my-5 w-full h-40 bg-white rounded-md">
+            <h3 className="text-xl pl-2">{note.title}</h3>
+            <p className="pl-3">{note.content}</p>
+            <p>Likes: {note.likes}</p>
+            
           </div>
         ))}
       </div>

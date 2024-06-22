@@ -25,6 +25,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
                 }
             ).then(({ data: { text } }) => {
                 resultContainer.textContent = text;
+                return text;
             }).catch(error => {
                 console.error('Error:', error);
                 resultContainer.textContent = 'Error processing image.';

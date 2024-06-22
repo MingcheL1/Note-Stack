@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { WavyBackground } from "@/components/ui/wavy-background";
+import {NoteCards} from "@/components/NoteCards"
 
 const Page=()=>{
     return(
@@ -21,7 +22,12 @@ const Page=()=>{
                 </div>
             </div>
 
-            
+            <div className="bg-black w-screen">
+                <div className="lg:w-3/4 w-4/5 m-auto bg-black">
+                    <NoteCards/>
+                </div>
+            </div>
+                
         </div>
     )
 }
