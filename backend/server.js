@@ -1,5 +1,5 @@
 const { express, bodyParser, helmet, morgan, cors} = require('./middlewares');
-
+const connectDB = require("./db");
 const PORT = 4000;
 const app = express();
 
@@ -13,6 +13,7 @@ app.use(
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+connectDB();
 app.use(morgan("dev"));
 app.use(helmet());
 
