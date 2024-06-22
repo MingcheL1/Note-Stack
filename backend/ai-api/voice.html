@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio to Text Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio to Text Converter</h1>
+    <form id="audio-form">
+        <input type="file" id="audio-file" accept="audio/*" required>
+        <button type="submit">Transcribe</button>
+    </form>
+    <div id="result"></div>
+    <script src="voice.js"></script>
+</body>
+</html>

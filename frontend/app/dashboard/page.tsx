@@ -2,9 +2,9 @@ import { Navbar } from "@/components/navbar";
 
 const Page=()=>{
     return(
-        <div>
+        <div className="bg-black w-screen h-screen">
             <Navbar/>
-            AI
+            
         </div>
     )
 }

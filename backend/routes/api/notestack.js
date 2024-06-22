@@ -1,27 +1,31 @@
-
-const express = require("express");
+// backend/routes/router.js
+const express = require('express');
 const router = express.Router();
-const Note = require("../../models/Note.js");
+const { Note, User } = require('../models');
 
-app.post('/notes', requireAuth, async (req, res) => {
+// Handle saving a new note
+router.post('/notes', requireAuth, async (req, res) => {
     try {
         const newNote = new Note({
             ...req.body,
-            owner: req.auth.userId 
+            owner: req.auth.userId,
         });
         await newNote.save();
         res.status(201).json(newNote);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        console.error('Error saving note:', error);
+        res.status(400).json({ error: 'Failed to save note' });
     }
 });
 
-app.get('/public-notes', requireAuth, async (req, res) => {
+// Fetch all public notes
+router.get('/public-notes', async (req, res) => {
     try {
         const publicNotes = await Note.find({ isPublic: true });
         res.json(publicNotes);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error fetching public notes:', error);
+        res.status(500).json({ error: 'Failed to fetch public notes' });
     }
 });
 

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //MongoDB connection URL
-const URL = "mongodb+srv://rzhang27:apple1234@cluster0.h6gdxc3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const URL = process.env.DATABASEURL;
 
 const connectDB = async () => {
     await mongoose.connect(URL);

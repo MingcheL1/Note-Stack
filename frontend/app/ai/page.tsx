@@ -1,10 +1,10 @@
 import { Navbar } from "@/components/navbar";
 import "../../../backend/ai-api/index.js";
-import { AI } from "@/components/ai.jsx";
+import { Text } from "@/components/text"
 
 const Page=()=>{
     return(
-        <div><AI/></div>
+        <div><Text/></div>
     )
 }
 
