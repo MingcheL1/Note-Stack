@@ -122,20 +122,22 @@ export const Audio: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center">
-      <h2 className="text-4xl text-white font-bold">Speech-to-Text Recognition</h2>
-      <div className="grid grid-flow-col place-items-center mt-10">
-        <button className=" bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl"  onClick={startListening}>
-          Start Listening
-        </button>
-        <button className="bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl" onClick={stopListening}>
-          Stop Listening
-        </button>
-      </div>
-      <div>
-        <h3>Generated Content:</h3>
-        <div dangerouslySetInnerHTML={{ __html: generatedContent }} />
-      </div>
+    <div>
+      <div className="flex flex-col justify-center">
+          <h2 className="text-4xl text-white font-bold">Speech-to-Text Recognition</h2>
+          <div className="grid grid-flow-col place-items-center mt-10">
+            <button className=" bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl"  onClick={startListening}>
+              Start Listening
+            </button>
+            <button className="bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl" onClick={stopListening}>
+              Stop Listening
+            </button>
+          </div>
+        </div>
+        <div className="max-w-xl">
+            <h3 className="text-center text-xl mt-10 max-w-xl">Generated Content:</h3>
+            <div dangerouslySetInnerHTML={{ __html: generatedContent }} />
+          </div>
     </div>
   );
 };
