@@ -1,5 +1,6 @@
 import React, { FC, FormEvent, useState } from "react";
 import axios from 'axios';
+import Link from "next/link";
 
 export const Text: FC = () => {
   const updateGoogleSheet = () => {
@@ -150,12 +151,14 @@ export const Text: FC = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <button
-              type="submit"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              Save
-            </button>
+            <Link href="/browse">
+              <button
+                type="submit"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Save
+              </button>
+            </Link>
           </div>
         </form>
       </div>
