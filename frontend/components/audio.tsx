@@ -12,6 +12,10 @@ interface SpeechRecognitionEvent extends Event {
 }
 
 export const Audio: React.FC = () => {
+  
+
+  //------
+  
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [generatedContent, setGeneratedContent] = useState<string>('');
