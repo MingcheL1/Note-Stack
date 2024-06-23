@@ -151,14 +151,12 @@ export const Text: FC = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <Link href="/browse">
               <button
                 type="submit"
                 className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 Save
               </button>
-            </Link>
           </div>
         </form>
       </div>
