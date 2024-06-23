@@ -146,7 +146,7 @@ export const Lid = ({
           style={{
             boxShadow: "0px 2px 0px 2px var(--neutral-900) inset",
           }}
-          className="absolute inset-0 bg-[#010101] rounded-lg flex items-center justify-center"
+          className="absolute inset-0 bg-cyan-900 rounded-lg flex items-center justify-center"
         >
           <span className="text-white">
             {/* <AceternityLogo /> */}

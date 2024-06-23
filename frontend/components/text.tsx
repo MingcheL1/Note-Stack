@@ -1,23 +1,24 @@
 
 'use client';
 import React, { FC, FormEvent, useState } from "react";
+import { google } from "googleapis";
 import { Navbar } from "./navbar";
 
 export const Text: FC = () => {
   const [generatedContent, setGeneratedContent] = useState<string | null>('');
   
-  const [content, setContent] = useState()
-  const [likes, setLikes] = useState()
-  const [subject, setSubject] = useState()
-  const [isPublic, setPublic] = useState()
-  const [title, setTitle] = useState()
+  const [content, setContent] = useState('');
+  const [likes, setLikes] = useState<number>(0);
+  const [subject, setSubject] = useState('');
+  const [isPublic, setPublic] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const note={
-      content, 
-      likes, 
-      subject, 
+      content: generatedContent || 'Student Forgot to Generate Notes.', // Assign generaited content to json file ayyayyayayya C: yayayay hi Im afraz I did this at 4 am, yes all of the backend stuff 0_0
+      likes,
+      subject,
       title
     }
 
@@ -84,6 +85,10 @@ export const Text: FC = () => {
     handleCopyToClipboardWrapper(event);
   };
 
+  function setName(value: string): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div className="bg-black h-screen w-screen">
       <div className="flex items-center justify-center p-5">
@@ -107,21 +112,25 @@ export const Text: FC = () => {
         </div>
       </div>
       <div className="flex justify-center mt-10 bg-black">
-  <form className="bg-neutral-900 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
+         
+  <form className="bg-neutral-900 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-lg" onSubmit={handleSubmit}>
     <div className="mb-4">
       <label htmlFor="category" className="block text-sm font-medium text-white">
         Category
       </label>
       <select
+        required
         id="category"
-        className="block w-full px-3 py-2 border border-gray-300 bg-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+        // value={subject}
+        onChange = {(e)=>setSubject(e.target.value)} 
+        className=" block w-full px-3 py-2 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
       >
-        <option className=" bg-black">Math</option>
-        <option className=" bg-black">English</option>
-        <option className=" bg-black">History</option>
-        <option className=" bg-black">Science</option>
-        <option className=" bg-black">STEM</option>
-        <option className=" bg-black">Other</option>
+        <option className=" bg-black text-white">Math</option>
+        <option className=" bg-black text-white">English</option>
+        <option className=" bg-black text-white">History</option>
+        <option className=" bg-black text-white">Science</option>
+        <option className=" bg-black text-white">STEM</option>
+        <option className=" bg-black text-white">Other</option>
       </select>
     </div>
 
@@ -130,10 +139,13 @@ export const Text: FC = () => {
         Note Title
       </label>
       <input
+        required
+        value={title}
+        onChange = {(e)=>setTitle(e.target.value)} 
         type="text"
         id="title"
         placeholder="Enter title here"
-        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+        className="block text-black w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1 bg-white"
       />
     </div>
 
