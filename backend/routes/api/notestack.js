@@ -40,6 +40,10 @@ router.get('/notes', async (req, res) => {
 //     }
 // });
 
+router.get('/test', (req, res) => {
+    res.status(200).json({ message: 'Test endpoint is working!' });
+});
+
 router.post('/notes', async (req, res) => {
     try {
         // const strUserId = req.body.userId;
