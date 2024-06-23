@@ -12,8 +12,7 @@ export const Navbar:FC=()=>{
                 <div className="grid grid-flow-col gap-12 text-2xl">
                     <Link href="/" className="text-white underline_anim">Home</Link>
                     <Link href="/ai" className="text-white underline_anim">AI</Link>
-                    <Link href="/dashboard" className="text-white underline_anim">Dashboard</Link>
-                    <Link href="/browse" className="text-white underline_anim">Browse</Link>     
+                    <Link href="/browse" className="text-white underline_anim">Browse Notes</Link>     
                 </div>
             </div>
         </div>

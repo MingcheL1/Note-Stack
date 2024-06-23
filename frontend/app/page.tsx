@@ -20,12 +20,12 @@ export default function Home() {
     },
     {
       quote: "React Framework: Next.js is a popular framework built on top of React, leveraging its component-based structure and virtual DOM.",
-      name: "Edgar Allan Poe",
+      name: "Ken",
       title: "Web Dev Notes",
     },
 
   ];
-
+1
   return (
     <div className="bg-black min-h-screen">
       {/* Navbar */}
@@ -63,13 +63,13 @@ export default function Home() {
       {/* Call to Action Buttons */}
       <div className="flex items-center justify-center py-10 space-x-8">
         <button className="w-52 rounded-full bg-gradient-to-r from-violet-600 to-indigo-800 text-white text-2xl container_anim">
-          <Link href="/register">
-          <p className="p-4">Register</p>
+          <Link href="/ai">
+          <p className="p-4">Create Notes</p>
           </Link>
         </button>
         <button className="w-52 rounded-full bg-gradient-to-r from-blue-600 to-pink-600 text-white text-2xl container_anim">
-          <Link href="/ai">
-            <p className="p-4">View More</p>
+          <Link href="/browse">
+            <p className="p-4">Browse Notes</p>
           </Link>
         </button>
       </div>
@@ -94,7 +94,8 @@ export default function Home() {
 
       {/* Infinite Moving Cards Section */}
       <div className="bg-black text-white py-20">
-        <h1 className="text-center text-4xl mb-10 font-bold">Share your notes with other students</h1>
+        <h1 className="text-center text-4xl mb-10 font-bold">Share your AI notes with other students</h1>
+        <h1 className="text-center text-4xl mb-10 font-bold">And View Other Student's notes</h1>
         <div className="h-[40rem] rounded-md flex flex-col antialiase dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
           <InfiniteMovingCards
             items={notes}
@@ -102,6 +103,7 @@ export default function Home() {
             speed="slow"
           />
         </div>
+        <h1 className="text-center text-4xl mb-10 font-bold">By Students, for Students</h1>
       </div>
     </div>
   );

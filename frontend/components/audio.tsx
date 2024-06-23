@@ -1,6 +1,7 @@
 import { IconMicrophone } from '@tabler/icons-react';
-import React, { useState } from 'react';
-
+import React, { FormEvent, useState } from 'react';
+import axios from 'axios';
+import Link from 'next/link';
 declare global {
   interface Window {
     webkitSpeechRecognition: typeof SpeechRecognition;
@@ -12,6 +13,31 @@ interface SpeechRecognitionEvent extends Event {
 }
 
 export const Audio: React.FC = () => {
+  const [isAlerlVisible, setIsAlertVisible] = useState(false);
+
+  const openAlert = () => {
+    setIsAlertVisible(true);
+  };
+
+  const closeAlert = () => {
+    setIsAlertVisible(false);
+  };
+  const updateGoogleSheet = () => {
+    fetch("https://sheet.best/api/sheets/a57fa426-17d2-4fbc-87a8-9724d5219b68", {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          id: "101",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
   
 
   //------
@@ -19,6 +45,27 @@ export const Audio: React.FC = () => {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [generatedContent, setGeneratedContent] = useState<string>('');
+  const [likes, setLikes] = useState<number>(0);
+  const [subject, setSubject] = useState('');
+  const [title, setTitle] = useState('');
+
+  
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    
+    e.preventDefault();
+    const note = {
+      content: generatedContent || 'Student Forgot to Generate Notes.',
+      likes: 0,
+      subject,
+      title
+    };
+
+    console.log(note);
+      axios.post('https://sheet.best/api/sheets/a57fa426-17d2-4fbc-87a8-9724d5219b68', note).then((response)=>{
+        console.log(response);
+      });
+  
+  };
 
   let recognition: SpeechRecognition | null = null;
 
@@ -134,7 +181,7 @@ export const Audio: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="bg-black w-full h-full">
       <div className="flex flex-col justify-center">
         <div className="grid grid-flow-col place-items-center mt-10">
         <button className="bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl flex items-center" onClick={toggleListening}>
@@ -152,7 +199,7 @@ export const Audio: React.FC = () => {
         </div>
       </div>
       <div className="flex justify-center mt-10 bg-black w-screen h-auto">
-      <form className="bg-neutral-900 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
+      <form className="bg-neutral-900 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-lg" onSubmit={handleSubmit}>
     <div className="mb-4">
       <label htmlFor="category" className="block text-sm font-medium text-white">
         Category
@@ -160,6 +207,7 @@ export const Audio: React.FC = () => {
       <select
         id="category"
         className="block w-full px-3 py-2 border border-gray-300 bg-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+        onChange={(e) => setSubject(e.target.value)}
       >
         <option className=" bg-black">Math</option>
         <option className=" bg-black">English</option>
@@ -177,19 +225,20 @@ export const Audio: React.FC = () => {
       <input
         type="text"
         id="title"
+        onChange={(e) => setTitle(e.target.value)}
         placeholder="Enter title here"
-        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1 text-black"
       />
     </div>
 
     <div className="flex items-center justify-between">
-      <button
-        type="submit"
-        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-      >
-        Save
-      </button>
-    </div>
+        <button
+          type="submit"
+          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          Save
+        </button>
+      </div>
   </form>
 </div>
 

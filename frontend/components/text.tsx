@@ -120,12 +120,12 @@ export const Text: FC = () => {
       <div className="flex justify-center mt-10 bg-black">
         <form className="bg-neutral-900 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-lg" onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="category" className="block text-sm font-medium text-white">Category</label>
+            <label htmlFor="category" className="block text-sm font-medium text-white ">Category</label>
             <select
               required
               id="category"
               onChange={(e) => setSubject(e.target.value)}
-              className="block w-full px-3 py-2 border border-gray-300 text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+              className="bg-black text-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
             >
               <option className="bg-black text-white">Math</option>
               <option className="bg-black text-white">English</option>
