@@ -39,7 +39,7 @@ export const NoteCards: React.FC<{ searchQuery: string }> = ({ searchQuery }) =>
     );
 
     return (
-        <div className="w-4/5 m-auto lg:grid-cols-3">
+        <div className="w-4/5 m-auto lg:grid-cols-3 ">
             {filteredData.map((item, index) => (
                 <li key={index}>
                     <div>
@@ -49,7 +49,7 @@ export const NoteCards: React.FC<{ searchQuery: string }> = ({ searchQuery }) =>
                                 <div className=" bg-blue-400 rounded-md flex items-center justify-center p-2">{item.subject}</div>
                             </div>
                             <br/>
-                            <p className="ml-7" dangerouslySetInnerHTML={{ __html: item.content.replace(/\n/g, '<br />') }}></p>
+                            <p className="ml-7 jetbrains-mono " dangerouslySetInnerHTML={{ __html: item.content.replace(/\n/g, '<br />') }}></p>
                         </div>
                     </div>
                 </li>
