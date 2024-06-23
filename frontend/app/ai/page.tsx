@@ -8,6 +8,18 @@ import { Audio } from "@/components/audio";
 const Page = () => {
   const [selectedComponent, setSelectedComponent] = useState<string>('text');
 
+  const [content, setContent] = useState()
+  const [likes, setLikes] = useState()
+  const [subject, setSubject] = useState()
+  const [isPublic, setPublic] = useState()
+
+  const note={
+    content, 
+    likes, 
+    subject, 
+    isPublic
+  }
+
   const handleSelectChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedComponent(event.target.value);
   };

@@ -1,4 +1,4 @@
-"use client";
+import { IconMicrophone } from '@tabler/icons-react';
 import React, { useState } from 'react';
 
 declare global {
@@ -132,19 +132,64 @@ export const Audio: React.FC = () => {
   return (
     <div>
       <div className="flex flex-col justify-center">
-          <div className="grid grid-flow-col place-items-center mt-10">
-            <button className="bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl" onClick={toggleListening}>
-              {listening ? 'Stop Listening' : 'Start Listening'}
-            </button>
-          </div>
+        <div className="grid grid-flow-col place-items-center mt-10">
+        <button className="bg-gradient-to-r from-violet-600 to-indigo-800 p-3 rounded-xl flex items-center" onClick={toggleListening}>
+          {listening ? 'Stop Recording' : 'Start Recording'}
+          <IconMicrophone className={`ml-2 ${listening ? 'text-red-600' : 'text-white'}`} size={24} style={{ verticalAlign: 'middle' }} />
+        </button>
         </div>
-        <div className="flex justify-center items-center">
-          <div className="flex items-center justify-center mt-4 bg-neutral-900 p-6 rounded-lg shadow-lg w-[680px] h-96">
-            <p className="text-white w-full h-full text-xl font-mono whitespace-pre-line overflow-y-auto" id="output">
-              {generatedContent}
-            </p>
-          </div>
       </div>
+      <h1 className="text-center font-bold text-4xl mt-10">Notes:</h1>
+      <div className="flex justify-center items-center mt-4">
+        <div className="flex items-center justify-center bg-neutral-900 p-6 rounded-lg shadow-lg w-[680px] h-96">
+          <p className="text-white w-full h-full text-xl font-mono whitespace-pre-line overflow-y-auto" id="output">
+            {generatedContent}
+          </p>
+        </div>
+      </div>
+      <div className="flex justify-center mt-10 bg-black w-screen h-auto">
+      <form className="bg-neutral-900 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full max-w-lg">
+    <div className="mb-4">
+      <label htmlFor="category" className="block text-sm font-medium text-white">
+        Category
+      </label>
+      <select
+        id="category"
+        className="block w-full px-3 py-2 border border-gray-300 bg-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+      >
+        <option className=" bg-black">Math</option>
+        <option className=" bg-black">English</option>
+        <option className=" bg-black">History</option>
+        <option className=" bg-black">Science</option>
+        <option className=" bg-black">STEM</option>
+        <option className=" bg-black">Other</option>
+      </select>
+    </div>
+
+    <div className="mb-4">
+      <label htmlFor="title" className="block text-sm font-medium text-white">
+        Note Title
+      </label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Enter title here"
+        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent mt-1"
+      />
+    </div>
+
+    <div className="flex items-center justify-between">
+      <button
+        type="submit"
+        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+
     </div>
   );
 };

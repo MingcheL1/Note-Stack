@@ -63,7 +63,9 @@ export default function Home() {
       {/* Call to Action Buttons */}
       <div className="flex items-center justify-center py-10 space-x-8">
         <button className="w-52 rounded-full bg-gradient-to-r from-violet-600 to-indigo-800 text-white text-2xl container_anim">
+          <Link href="/register">
           <p className="p-4">Register</p>
+          </Link>
         </button>
         <button className="w-52 rounded-full bg-gradient-to-r from-blue-600 to-pink-600 text-white text-2xl container_anim">
           <Link href="/ai">
@@ -92,7 +94,7 @@ export default function Home() {
 
       {/* Infinite Moving Cards Section */}
       <div className="bg-black text-white py-20">
-        <h1 className="text-center text-4xl mb-10">Share your notes with other students</h1>
+        <h1 className="text-center text-4xl mb-10 font-bold">Share your notes with other students</h1>
         <div className="h-[40rem] rounded-md flex flex-col antialiase dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
           <InfiniteMovingCards
             items={notes}
