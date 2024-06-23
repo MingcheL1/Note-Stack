@@ -2,8 +2,8 @@
 import { Navbar } from "@/components/navbar";
 import "../../../backend/ai-api/index.js";
 import { Text } from "@/components/text"
-import {Image} from "@/components/image";
 import { useState } from "react";
+import {Audio} from "@/components/audio"
 const Page = () => {
     const [selectedComponent, setSelectedComponent] = useState<string>('');
   
@@ -15,8 +15,8 @@ const Page = () => {
       switch (selectedComponent) {
         case 'text':
           return <Text />;
-        case 'image':
-          return <Image />;
+        case 'audio':
+          return <Audio/>;
         default:
           return <Text/>;
       }
@@ -29,7 +29,7 @@ const Page = () => {
         <select className="rounded-lg text-white text-2xl mt-10 h-auto bg-gradient-to-r from-violet-600 to-indigo-800"value={selectedComponent} onChange={handleSelectChange}>
           <option value="">Select...</option>
           <option value="text">Text to Notes</option>
-          <option value="image">Image to Notes</option>
+          <option value="audio">Audio to Notes</option>
         </select>
         
         <div style={{ marginTop: '20px' }}>

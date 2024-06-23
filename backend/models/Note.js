@@ -9,8 +9,8 @@ const noteSchema = new Schema({
     content: { type: String, required: true }, // Content field required
     likes: { type: Number}, // Likes field required
     subject: { type: String, required: true }, // Subject field required
-    owner: { type: Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to User model, required
-    isPublic: { type: Boolean, default: false }, // isPublic field defaulting to false
+    owner: { type: String}, // Reference to User model, required
+    isPublic: { type: Boolean, required: true}, // isPublic field defaulting to false
     createdAt: { type: Date, default: Date.now }, // createdAt field with default value of current date/time
     updatedAt: { type: Date, default: Date.now }, // updatedAt field with default value of current date/time
 });

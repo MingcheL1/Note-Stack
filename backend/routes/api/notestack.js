@@ -1,9 +1,12 @@
 // backend/routes/notestack.js
 
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const handleError = require("../../utils/errorHandler");
-const { Note, User } = require('../models'); // Import Note and User models
+const { Note, User } = require('../../models'); // Import Note and User models
+const { userInfo } = require('os');
+const ObjectId = require("mongodb").ObjectId;
 
 // Define route to get all notes
 router.get('/notes', async (req, res) => {
@@ -16,35 +19,62 @@ router.get('/notes', async (req, res) => {
     }
 });
 
+// router.post("/review", async (req, res) => {
+//     try {
+//         const restaurantStrId = req.body.restaurantId;
+//         const restaurantObjId = new ObjectId(restaurantStrId);
+//         const restaurantDoc = await Restaurant.findById(restaurantObjId);
+
+
+//         if (restaurantDoc) {
+//             const newReview = new Review(req.body);
+//             await newReview.save().catch(err => console.log(err));
+//             return res.status(200).json(newReview);
+//         } else {
+//             return res.status(400).json({ message: "No such restaurant exists to write a review" });
+//         }
+
+//     } catch (error) {
+//         console.log(error);
+//         handleError(error, res);
+//     }
+// });
+
 router.post('/notes', async (req, res) => {
-    const { title, content, subject, userId } = req.body; // Destructure title, content, subject, and userId from request body
     try {
-        // Validate userId format (must be a valid ObjectId)
-        if (!mongoose.Types.ObjectId.isValid(userId)) {
-            return res.status(400).json({ msg: 'Invalid userId format' });
-        }
-        // Find user by userId in User model
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
+        // const strUserId = req.body.userId;
+
+        // // Convert string userId to ObjectId
+        // const usersId = new mongoose.Types.ObjectId(strUserId);
+
+        // // Validate userId format (must be a valid ObjectId)
+        // if (!mongoose.Types.ObjectId.isValid(usersId)) {
+        //     return res.status(400).json({ msg: 'Invalid userId format' });
+        // }
+
+        // // Find user by userId using find method with ObjectId
+        // const user = await User.findOne({ _id: usersId });
+        // if (!user) {
+        //     return res.status(404).json({ msg: 'User not found' });
+        // }
+
+        // Destructure the remaining fields from the request body
+        const { title, content, subject } = req.body;
+
         // Create a new Note instance with validated data
-        const newNote = new Note({
-            title,
-            content,
-            subject,
-            owner: userId
-        });
+        const newNote = new Note(req.body);
+
         // Save new note to database
         await newNote.save();
 
         // Respond with the newly created note
         return res.status(201).json(newNote);
     } catch (error) {
-        console.error(error.message);
-        handleError(error, res);
-    }   
+        console.error('Error creating note:', error.message);
+        return res.status(500).json({ msg: 'Server Error' });
+    }
 });
+
 
 // Route to get all users
 router.get('/users', async (req, res) => {

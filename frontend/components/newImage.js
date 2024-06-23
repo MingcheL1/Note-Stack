@@ -37,31 +37,31 @@ async function recognizeTextFromImage() {
     });
 }
 
-// Example usage:
 document.getElementById('uploadForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
+  event.preventDefault(); // Prevent the default form submission behavior
 
-    const loadingIndicator = document.getElementById('loading');
-    const resultContainer = document.getElementById('result');
+  const loadingIndicator = document.getElementById('loading');
+  const resultContainer = document.getElementById('result');
 
-    try {
-        loadingIndicator.style.display = 'block';
-        resultContainer.textContent = ''; // Clear previous results
+  try {
+      loadingIndicator.style.display = 'block';
+      resultContainer.textContent = ''; // Clear previous results
 
-        const recognizedText = await recognizeTextFromImage();
-        // Now you have the recognized text as a string
-        console.log('Recognized text:', recognizedText);
+      const recognizedText = await recognizeTextFromImage();
+      // Now you have the recognized text as a string
+      console.log('Recognized text:', recognizedText);
 
-        // Example of passing the recognized text to another function
-        anotherFunction(recognizedText);
+      // Example of passing the recognized text to another function
+      await anotherFunction(recognizedText); // Ensure 'await' here to complete before finally block
 
-    } catch (error) {
-        console.error('Error:', error);
-        resultContainer.textContent = error; // Display error message
-    } finally {
-        loadingIndicator.style.display = 'none'; // Hide loading indicator
-    }
+  } catch (error) {
+      console.error('Error:', error);
+      resultContainer.textContent = error; // Display error message
+  } finally {
+      loadingIndicator.style.display = 'none'; // Hide loading indicator
+  }
 });
+
 
 let text = "";
 

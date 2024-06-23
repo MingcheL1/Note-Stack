@@ -6,7 +6,7 @@ const cors = require('cors'); // Require cors middleware for cross-origin reques
 
 const connectDB = require('./db'); // Require the connectDB function from db.js
 const notestack = require('./routes/api/notestack'); // Require notestack route handler
-
+require('dotenv').config();
 const PORT = 4000;
 const app = express();
 
