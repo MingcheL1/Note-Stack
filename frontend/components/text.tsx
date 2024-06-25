@@ -43,7 +43,7 @@ export const Text: FC = () => {
   };
 
   async function generateContent(prompt: string) {
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyA-Rv1tf59PGCNnb2FPdDGZt6VMxhZagF4';
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDw4nlGr7ptpl8xlYquMzMfjH8WoDoXNX0';
     const headers = {
       'Content-Type': 'application/json',
     };
