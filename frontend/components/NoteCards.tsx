@@ -7,7 +7,7 @@ export const NoteCards: React.FC<{ searchQuery: string }> = ({ searchQuery }) =>
     const [data, setData] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const sheetBestUrl = 'https://sheet.best/api/sheets/a57fa426-17d2-4fbc-87a8-9724d5219b68';
+    const sheetBestUrl = 'SHEETS_URL';
 
     useEffect(() => {
         const fetchData = async () => {
