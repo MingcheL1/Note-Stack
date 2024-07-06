@@ -25,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       console.log('Appending the following data to Google Sheets:', values);
 
       const response = await sheets.spreadsheets.values.append({
-        spreadsheetId: '1Qj7hhPAR7KPfzWwm11QxsYOFzGaxRsafof3dD2Ml1NM',
+        spreadsheetId: 'SPREADSHEET_ID',
         range: 'Backend!A1:D1',
         valueInputOption: 'RAW',
         requestBody: {
