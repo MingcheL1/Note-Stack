@@ -38,5 +38,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Gemini API
-make sure when you are testing this website, you replace the API_KEY placeholder with your own API Key
+## API KEYS
+make sure when you are testing this website, you replace the API_KEY placeholder with your own API Keys
